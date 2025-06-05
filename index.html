@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document Viewer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      overflow: hidden;
+    }
+    .navbar {
+      background-color: #fff;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .navbar h1 {
+      font-size: 18px;
+      color: #444;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 20px;
+      animation: fadeIn 1.5s ease;
+    }
+    .game-button {
+      background-color: #fff;
+      padding: 15px 25px;
+      margin: 15px;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      font-size: 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+    .game-button:hover {
+      transform: scale(1.02);
+      background-color: #f0f0f0;
+    }
+    iframe {
+      width: 100%;
+      height: 90vh;
+      border: none;
+      display: none;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <h1>Document Tools</h1>
+  </div>
+  <div class="container">
+    <div class="game-button" onclick="launchGame('https://ubg98.github.io/Subway-Surfers/')">Graphing Utility A</div>
+    <div class="game-button" onclick="launchGame('https://ubg98.github.io/Basketball-Stars/')">Equation Visualizer B</div>
+  </div>
+  <iframe id="game-frame"></iframe>
+  <script>
+    function launchGame(url) {
+      const iframe = document.getElementById('game-frame');
+      iframe.src = url;
+      iframe.style.display = 'block';
+      document.querySelector('.container').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
